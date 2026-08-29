@@ -60,34 +60,6 @@ def main() -> None:
     )
 
 
-# ── the claims above, checked ────────────────────────────────────────────────────
-
-_i, _j = find_pair(VALUES, TARGET)
-assert VALUES[_i] + VALUES[_j] == TARGET
-
-# THE CLAIM: one sweep. The pointers only ever converge, so the moves are bounded by the
-# length — against the nested loop's n(n-1)/2 pairs.
-_n = len(VALUES)
-assert steps(VALUES, TARGET) < _n
-assert brute_force(VALUES, TARGET)[1] > steps(VALUES, TARGET)
-assert steps(VALUES, 99) == _n - 1, 'a miss walks the pointers all the way together'
-
-# It agrees with the nested loop on every target, present or absent — including the ones
-# just outside the reachable range at either end.
-for _t in range(0, 70):
-    _fast = find_pair(VALUES, _t)
-    _slow = brute_force(VALUES, _t)[0]
-    assert (_fast is None) == (_slow is None), _t
-    if _fast:
-        assert VALUES[_fast[0]] + VALUES[_fast[1]] == _t
-
-# Edges: too few values to have a pair at all.
-assert find_pair([], 5) is None
-assert find_pair([5], 5) is None
-assert find_pair([2, 3], 5) == (0, 1)
-
-# A value is never paired with itself, even when double it hits the target.
-assert find_pair([4, 9], 8) is None
 
 if __name__ == '__main__':
     main()

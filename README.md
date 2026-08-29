@@ -7,6 +7,7 @@ The working code from the [@ByteAnimates](https://www.facebook.com/ByteAnimates)
 ```bash
 python3 two_pointers.py
 python3 main.py
+python3 test_two_pointers.py
 ```
 
 No dependencies. Python 3.9+.
@@ -32,6 +33,7 @@ def find_pair(a, target):
 | | |
 | --- | --- |
 | `main.py` | run this — the demo, with real inputs and the claims asserted |
+| `test_two_pointers.py` | the properties, checked — they survive a rewrite |
 | `two_pointers.py` | the reel snippet, generated from the episode |
 
 ---
